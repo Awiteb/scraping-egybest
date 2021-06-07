@@ -44,17 +44,20 @@ class EgyBest():
                 return None, div_movies.text
             else:
                 movies_lst = [{"name":None if not movie.find('span', class_="title") else movie.find('span', class_="title").text,
-                                    "img":None if not movie.find('img') else movie.find('img').get('src'), 
-                                        "rating":None if not movie.find('span') else movie.find('span').text} 
-                                            for movie in movies]
+                                    "url":None if not movie.get('href') else movie.get('href').replace('/?ref=search-p1', ''),
+                                        "img":None if not movie.find('img') else movie.find('img').get('src'), 
+                                            "rating":None if not movie.find('span') else movie.find('span').text} 
+                                                for movie in movies]
                 return movies_lst[:amount], None
         else:
             return "The object is not a method enabled on search"
     def display_search(self, text:str, amount=12) -> str:
         movies, err = self.search(text, amount)
         if movies:
-            return f"{GREEN}\n{'='*30}\n".join([f"{RESET}Name: {MAGENTA}{movie['name']}\n\
-                                        \r{RESET}Img: {CYAN}{movie['img']}\n\
+            return f"{GREEN}\n{'='*30}\n".join([f"\
+                                        \r{RESET}Name: {MAGENTA}{movie['name']}\n\
+                                        \r{RESET}URL: {CYAN}{movie['url']}\n\
+                                        \r{RESET}Img: {MAGENTA}{movie['img']}\n\
                                         \r{RESET}Rating: {CYAN}{movie['rating']}{RESET}" for movie in movies])
         else:
             return err

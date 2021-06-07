@@ -22,8 +22,9 @@ print(searcher.display_search('fast', amount=1))
 # output 
 """
 Name: Fast & Furious (2009)
+URL: https://gose.egybest.bid/movie/fast-furious-2009
 Img: https://i.egycdn.com/pic/RHNhSUNlY21Zdm1tbXZFY3Z3UGNOdm1EVGptRQ.jpg
-Rating: 6.6   
+Rating: 6.6 
 """
 
 # make movies getattr
