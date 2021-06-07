@@ -4,7 +4,7 @@ from egyBest import EgyBest
 searcher = EgyBest(search=True)
 
 # search in egy best
-searcher.search("fast", amount=1) # max amount = 12
+print(searcher.search("fast", amount=1)) # max amount = 12
 # output
 """
 (
@@ -17,12 +17,20 @@ searcher.search("fast", amount=1) # max amount = 12
         None
     )
 """
+# display search
+print(searcher.display_search('fast', amount=1))
+# output 
+"""
+Name: Fast & Furious (2009)
+Img: https://i.egycdn.com/pic/RHNhSUNlY21Zdm1tbXZFY3Z3UGNOdm1EVGptRQ.jpg
+Rating: 6.6   
+"""
 
 # make movies getattr
 movies_getattr = EgyBest(search=False)
 
 # get movie from egy best
-movies_getattr.get_movie('Fast Furious 2009')
+print(movies_getattr.get_movie('Fast Furious 2009'))
 # output
 """
 {   'Duration': '01:46:46',

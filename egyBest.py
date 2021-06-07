@@ -50,12 +50,12 @@ class EgyBest():
                 return movies_lst[:amount], None
         else:
             return "The object is not a method enabled on search"
-    def display_search(self, text:str) -> str:
-        movies, err = self.search(text)
+    def display_search(self, text:str, amount=12) -> str:
+        movies, err = self.search(text, amount)
         if movies:
             return f"{GREEN}\n{'='*30}\n".join([f"{RESET}Name: {MAGENTA}{movie['name']}\n\
                                         \r{RESET}Img: {CYAN}{movie['img']}\n\
-                                        \r{RESET}Rating: {CYAN}{movie['rating']}" for movie in movies])
+                                        \r{RESET}Rating: {CYAN}{movie['rating']}{RESET}" for movie in movies])
         else:
             return err
     def get_movie(self, movie_name) -> dict:
