@@ -5,3 +5,6 @@
 
 ## Acknowledgments
 Thank you EgyBest for the hard work you provide
+
+## License
+*[GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)*
