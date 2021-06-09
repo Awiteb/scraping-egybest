@@ -55,7 +55,7 @@ class EgyBest():
         else:
             raise ValueError("Amount must be integer")
     def display_search(self, text:str, amount=12) -> str:
-        movies, err = self.search(text, amount)
+        movies = self.search(text, amount)['resutl']
         if movies:
             return f"{GREEN}\n{'='*30}\n".join([f"\
                                         \r{RESET}Name: {MAGENTA}{movie['name']}\n\
@@ -63,7 +63,7 @@ class EgyBest():
                                         \r{RESET}Img: {MAGENTA}{movie['img']}\n\
                                         \r{RESET}Rating: {CYAN}{movie['rating']}{RESET}" for movie in movies])
         else:
-            return err
+            return None
     def get_movie(self, movie_name) -> dict:
         self.title = movie_name
         movie_details = self.__get_movie_table()
