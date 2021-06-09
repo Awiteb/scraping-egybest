@@ -36,21 +36,24 @@ class EgyBest():
         return bs4(r.content, 'html.parser'), r
     
     def search(self, text:str, amount=12) -> list:
-        if self.is_search:
-            source, _ = self.get_page_source(text)
-            div_movies = source.find('div', id="movies", class_="movies")
-            movies = div_movies.find_all('a', class_="movie")
-            if len(movies) == 0:
-                return None, div_movies.text
+        if str(amount).isnumeric() and int(amount) >= 0:
+            if self.is_search:
+                source, _ = self.get_page_source(text)
+                div_movies = source.find('div', id="movies", class_="movies")
+                movies = div_movies.find_all('a', class_="movie")
+                if len(movies) == 0:
+                    raise  Exception(div_movies.text)
+                else:
+                    movies_lst = [{"name":None if not movie.find('span', class_="title") else movie.find('span', class_="title").text,
+                                        "url":None if not movie.get('href') else movie.get('href').replace('/?ref=search-p1', ''),
+                                            "img":None if not movie.find('img') else movie.find('img').get('src'), 
+                                                "rating":None if not movie.find('span') else movie.find('span').text} 
+                                                    for movie in movies]
+                    return {"resutl":movies_lst[:int(amount)]}
             else:
-                movies_lst = [{"name":None if not movie.find('span', class_="title") else movie.find('span', class_="title").text,
-                                    "url":None if not movie.get('href') else movie.get('href').replace('/?ref=search-p1', ''),
-                                        "img":None if not movie.find('img') else movie.find('img').get('src'), 
-                                            "rating":None if not movie.find('span') else movie.find('span').text} 
-                                                for movie in movies]
-                return movies_lst[:amount], None
+                return "The object is not a method enabled on search"
         else:
-            return "The object is not a method enabled on search"
+            raise ValueError("Amount must be integer")
     def display_search(self, text:str, amount=12) -> str:
         movies, err = self.search(text, amount)
         if movies:
