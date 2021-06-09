@@ -1,5 +1,5 @@
 # scraping-egybest
-[class](https://github.com/Awiteb/scraping-egybest/blob/master/egyBest.py) you can search and get films from [EgyBest](https://Egy.best)
+[class](https://github.com/Awiteb/scraping-egybest/blob/master/egyBest.py) and [API](https://github.com/Awiteb/scraping-egybest/blob/master/api.py) you can search and get films from [EgyBest](https://Egy.best)
 ## example
 [here](https://github.com/Awiteb/scraping-egybest/blob/master/example.py) you can find some example
 
